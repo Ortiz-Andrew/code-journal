@@ -2,13 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code Journal</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body>
     <header class="heading">
       <div class="container">
@@ -17,20 +24,45 @@
             <h1>Code Journal</h1>
           </div>
         </div>
+      </div>
+    </header>
+    <main class="container">
+      <div class="row">
         <div class="column-full">
-          <h2>New Entry</h2>
-          <img src="./images/placeholder-image-square.jpg" alt="placeholder" />
-          <form>
+          <div class="top-header">
+            <h2>New Entry</h2>
+          </div>
+        </div>
+      </div>
+
+      <div data-view="entry-form"></div>
+
+      <form>
+        <div class="row">
+          <div class="column-half">
+            <img
+              src="./images/placeholder-image-square.jpg"
+              alt="placeholder" />
+          </div>
+          <div class="column-half">
             <label for="fname">First Name</label><br /><br />
             <input type="text" /><br /><br />
             <label for="photoURL">Photo URL</label><br /><br />
             <input type="text" /><br /><br />
-            <label for="notes">Notes</label><br /><br />
+          </div>
+          <div class="column-full">
+            <label class="notes" for="notes">Notes</label><br /><br />
             <textarea></textarea><br /><br />
-            <input type="button" value="SAVE" />
-          </form>
+          </div>
+          <div class="save-button">
+            <button>SAVE</button>
+          </div>
         </div>
-      </div>
-    </header>
+      </form>
+
+      <div data-view="entries" class="hidden"></div>
+    </main>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

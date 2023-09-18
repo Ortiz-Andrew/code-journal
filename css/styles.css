@@ -1,4 +1,37 @@
-.row {
+.heading {
   background-color: #4c2676;
   color: white;
+  text-align: left;
+}
+
+.column-half {
+  display: flex;
+  flex-direction: column;
+  float: left;
+}
+
+.column-full {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: ;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: top 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4c2676;
+  color: white;
+  border: none;
+}
+
+.save-button {
+  width: 100%;
+  display: flex;
+  justify-content: right;
 }
