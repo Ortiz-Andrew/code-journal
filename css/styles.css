@@ -1,0 +1,54 @@
+header {
+  background-color: #4c2676;
+  color: white;
+  text-align: left;
+}
+
+.column-half {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.column-full {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+  margin: top 10px;
+  margin-bottom: 10px;
+  height: 9rem;
+}
+
+button {
+  background-color: #4c2676;
+  color: white;
+  border: none;
+  border-radius: 5%;
+}
+
+.save-button {
+  display: flex;
+  justify-content: right;
+}
+
+#title {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 2rem;
+}
+
+#photo {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 2rem;
+}
+
+#notes {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
