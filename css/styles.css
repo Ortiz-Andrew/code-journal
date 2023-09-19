@@ -27,10 +27,10 @@ button {
   background-color: #4c2676;
   color: white;
   border: none;
+  border-radius: 5%;
 }
 
 .save-button {
-  width: 100%;
   display: flex;
   justify-content: right;
 }
