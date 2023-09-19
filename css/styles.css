@@ -1,4 +1,4 @@
-.heading {
+header {
   background-color: #4c2676;
   color: white;
   text-align: left;
@@ -13,7 +13,6 @@
 .column-full {
   display: flex;
   flex-direction: column;
-  margin-bottom: ;
 }
 
 textarea {
