@@ -7,7 +7,7 @@ header {
 .column-half {
   display: flex;
   flex-direction: column;
-  float: left;
+  margin-bottom: 20px;
 }
 
 .column-full {
@@ -21,6 +21,7 @@ textarea {
   border-radius: 5px;
   margin: top 10px;
   margin-bottom: 10px;
+  height: 9rem;
 }
 
 button {
@@ -33,4 +34,21 @@ button {
 .save-button {
   display: flex;
   justify-content: right;
+}
+
+#title {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 2rem;
+}
+
+#photo {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 2rem;
+}
+
+#notes {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
