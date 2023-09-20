@@ -38,23 +38,14 @@
                 alt="image placeholder" />
             </div>
             <div class="column-half inputs">
-              <ul>
-                <li>A very nice lake!</li>
-              </ul>
               <label for="title">Title</label>
               <input type="text" name="title" id="title" required />
-              <ul>
-                <li>A pretty lake!</li>
-              </ul>
               <label for="photo">Photo URL</label>
               <input type="text" name="text" id="photo" required />
             </div>
           </div>
           <div class="row">
             <div class="column-full">
-              <ul>
-                <li>I guess its not a new image!</li>
-              </ul>
               <label class="notes" for="notes">Notes</label>
               <textarea name="notes" id="notes" required></textarea>
               <div class="save-button">
@@ -64,7 +55,25 @@
           </div>
         </form>
       </div>
-      <div data-view="entries" class="hidden"></div>
+      <div data-view="entries" class="hidden">
+        <ul>
+          <li>
+            <img
+              src="./images/placeholder-image-square.jpg"
+              alt="entry image" />
+            placeholder text placeholder text placeholder text placeholder text
+            placeholder text
+          </li>
+          <li>
+            Title
+            <img
+              src="./images/placeholder-image-square.jpg"
+              alt="entry image" />
+            placeholder text placeholder text placeholder text placeholder text
+            placeholder text placeholder text placeholder text
+          </li>
+        </ul>
+      </div>
     </main>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
