@@ -31,6 +31,7 @@ $submitForm.addEventListener('submit', function (event) {
 function renderEntry(entry) {
   const $entryList = document.createElement('li');
   $entryList.className = 'row';
+  $entryList.setAttribute('data-entry-id', entry.entryID);
 
   const $entryDiv = document.createElement('div');
   $entryDiv.className = 'column-half';
@@ -45,12 +46,16 @@ function renderEntry(entry) {
   const $h1Entry = document.createElement('h1');
   $h1Entry.textContent = entry.title;
 
+  const $pencilIcon = document.createElement('i');
+  $pencilIcon.className = 'fas fa-pencil-alt';
+
   const $pElement = document.createElement('p');
   $pElement.textContent = entry.notes;
 
   $entryList.appendChild($entryDiv);
   $entryDiv.appendChild($entryImg);
   $otherDiv.appendChild($h1Entry);
+  $otherDiv.appendChild($pencilIcon);
   $otherDiv.appendChild($pElement);
   $entryList.appendChild($otherDiv);
 
