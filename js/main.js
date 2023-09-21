@@ -102,3 +102,29 @@ document.querySelector('a').addEventListener('click', function () {
 document.querySelector('.new').addEventListener('click', function () {
   viewSwap('entry-form');
 });
+
+$ul.addEventListener('click', function (event) {
+  if (event.target.classList.contains('fa-pencil-alt')) {
+    const entryId = event.target.closest('li').getAttribute('data-entry-id');
+    const clickedEntry = data.entries.find(
+      (entry) => entry.entryID === parseInt(entryId)
+    );
+
+    data.editing = clickedEntry;
+    populateForm(clickedEntry);
+    viewSwap('entry-form');
+  }
+});
+
+function populateForm(entry) {
+  const $titleInput = document.querySelector('#title');
+  const $photoInput = document.querySelector('#photo');
+  const $notesTextarea = document.querySelector('#notes');
+  const $formTitle = document.querySelector('.entry-title');
+
+  $titleInput.value = entry.title;
+  $photoInput.value = entry.photo;
+  $notesTextarea.value = entry.notes;
+
+  $formTitle.textContent = 'Edit Entry';
+}
