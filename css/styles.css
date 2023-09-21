@@ -7,7 +7,6 @@ header {
 .column-half {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 .column-full {
@@ -51,4 +50,32 @@ button {
 #notes {
   margin-bottom: 20px;
   margin-top: 20px;
+}
+
+.show-entries {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.entries-row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-two {
+  background-color: #562b81;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 12px;
+}
+
+ul {
+  padding: 0;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
 }
