@@ -1,28 +1,31 @@
-const $imageInput = document.querySelector('#photo');
+const $photo = document.querySelector('#photo');
 const $image = document.querySelector('img');
-const $form = document.querySelector('form');
 
-$imageInput.addEventListener('input', function (event) {
-  $image.setAttribute('src', event.target.value);
+$photo.addEventListener('input', function (event) {
+  $image.src = event.target.value;
 });
-
-$form.addEventListener('submit', function (event) {
+const $submitForm = document.querySelector('form');
+$submitForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const title = $form.elements.title.value;
-  const photoUrl = $form.elements.photo.value;
-  const notes = $form.elements.notes.value;
-  const inputValues = {
-    entryId: data.nextEntryId,
-    title,
-    photoUrl,
-    notes,
+  const $title = $submitForm.elements.title.value;
+  const $photo = $submitForm.elements.photo.value;
+  const $notes = $submitForm.elements.notes.value;
+  const formData = {
+    title: $title,
+    photo: $photo,
+    notes: $notes,
+    entryID: data.nextEntryId,
   };
 
   data.nextEntryId++;
-  data.entries.unshift(inputValues);
+  data.entries.unshift(formData);
 
-  $image.setAttribute('src', './images/placeholder-image-square.jpg');
-  $form.reset();
+  $ul.prepend(renderEntry(formData));
+  viewSwap('entries');
+
+  $image.src = './images/placeholder-image-square.jpg';
+  $submitForm.reset();
+  toggleNoEntries();
 });
 
 function renderEntry(entry) {
@@ -33,11 +36,11 @@ function renderEntry(entry) {
   $entryDiv.className = 'column-half';
 
   const $entryImg = document.createElement('img');
-  $entryImg.setAttribute('src', entry.photoUrl);
+  $entryImg.setAttribute('src', entry.photo);
   $entryImg.setAttribute('alt', entry.title);
 
-  const $Divtwo = document.createElement('div');
-  $Divtwo.className = 'column-half';
+  const $otherDiv = document.createElement('div');
+  $otherDiv.className = 'column-half';
 
   const $h1Entry = document.createElement('h1');
   $h1Entry.textContent = entry.title;
@@ -47,9 +50,9 @@ function renderEntry(entry) {
 
   $entryList.appendChild($entryDiv);
   $entryDiv.appendChild($entryImg);
-  $Divtwo.appendChild($h1Entry);
-  $Divtwo.appendChild($pElement);
-  $entryList.appendChild($Divtwo);
+  $otherDiv.appendChild($h1Entry);
+  $otherDiv.appendChild($pElement);
+  $entryList.appendChild($otherDiv);
 
   return $entryList;
 }
@@ -61,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $ul.appendChild($data);
   }
   toggleNoEntries();
+  viewSwap(data.view);
 });
 
 const $noEntries = document.querySelector('.no-entries');
@@ -71,3 +75,25 @@ function toggleNoEntries() {
     $noEntries.classList.remove('hidden');
   }
 }
+
+const entriesView = document.querySelector('.entries');
+const entryFormView = document.querySelector('.entry-form');
+
+function viewSwap(viewName) {
+  if (viewName === 'entries') {
+    entriesView.classList.remove('hidden');
+    entryFormView.classList.add('hidden');
+  } else if (viewName === 'entry-form') {
+    entriesView.classList.add('hidden');
+    entryFormView.classList.remove('hidden');
+  }
+  data.view = viewName;
+}
+
+document.querySelector('a').addEventListener('click', function () {
+  viewSwap('entries');
+});
+
+document.querySelector('.new').addEventListener('click', function () {
+  viewSwap('entry-form');
+});
