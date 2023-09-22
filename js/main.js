@@ -10,18 +10,46 @@ $submitForm.addEventListener('submit', function (event) {
   const $title = $submitForm.elements.title.value;
   const $photo = $submitForm.elements.photo.value;
   const $notes = $submitForm.elements.notes.value;
-  const formData = {
-    title: $title,
-    photo: $photo,
-    notes: $notes,
-    entryID: data.nextEntryId,
-  };
 
-  data.nextEntryId++;
-  data.entries.unshift(formData);
+  if (data.editing === null) {
+    const formData = {
+      title: $title,
+      photo: $photo,
+      notes: $notes,
+      entryID: data.nextEntryId,
+    };
 
-  $ul.prepend(renderEntry(formData));
-  viewSwap('entries');
+    data.nextEntryId++;
+    data.entries.unshift(formData);
+
+    $ul.prepend(renderEntry(formData));
+    viewSwap('entries');
+  } else {
+    const editiedEntryId = data.editing.entryID;
+    const editedEntryIndex = data.entries.findIndex(
+      (entry) => entry.entryID === editiedEntryId
+    );
+
+    if (editedEntryIndex !== -1) {
+      data.entries[editedEntryIndex].title = $title;
+      data.entries[editedEntryIndex].photo = $photo;
+      data.entries[editedEntryIndex].notes = $notes;
+
+      const $editedEntry = renderEntry(data.entries[editedEntryIndex]);
+
+      const $orginalEntry = $ul.querySelector(
+        `[data-entry-id="${editiedEntryId}"]`
+      );
+
+      if ($orginalEntry) {
+        $ul.replaceChild($editedEntry, $orginalEntry);
+      }
+    }
+    const $formTitle = document.querySelector('.entry-title');
+    $formTitle.textContent = 'New Entry';
+    data.editing = null;
+    viewSwap('entries');
+  }
 
   $image.src = './images/placeholder-image-square.jpg';
   $submitForm.reset();
@@ -40,8 +68,8 @@ function renderEntry(entry) {
   $entryImg.setAttribute('src', entry.photo);
   $entryImg.setAttribute('alt', entry.title);
 
-  const $otherDiv = document.createElement('div');
-  $otherDiv.className = 'column-half';
+  const $imgDiv = document.createElement('div');
+  $imgDiv.className = 'column-half';
 
   const $h1Entry = document.createElement('h1');
   $h1Entry.textContent = entry.title;
@@ -52,13 +80,17 @@ function renderEntry(entry) {
   const $pElement = document.createElement('p');
   $pElement.textContent = entry.notes;
 
+  const $titleWrapper = document.createElement('div');
+  $titleWrapper.setAttribute('class', 'title-wrapper');
+
   $entryList.appendChild($entryDiv);
   $entryDiv.appendChild($entryImg);
-  $otherDiv.appendChild($h1Entry);
-  $otherDiv.appendChild($pencilIcon);
-  $otherDiv.appendChild($pElement);
-  $entryList.appendChild($otherDiv);
-
+  $entryList.appendChild($entryDiv);
+  $entryList.appendChild($imgDiv);
+  $imgDiv.appendChild($titleWrapper);
+  $titleWrapper.appendChild($h1Entry);
+  $titleWrapper.appendChild($pencilIcon);
+  $imgDiv.appendChild($pElement);
   return $entryList;
 }
 
