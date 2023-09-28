@@ -160,3 +160,20 @@ function populateForm(entry) {
 
   $formTitle.textContent = 'Edit Entry';
 }
+
+const $deleteEntryButton = document.querySelector('.deleteEntryButton');
+const $confirmModal = document.querySelector('.confirmModal');
+const $confirmDeleteButton = document.querySelector('#confirmDeleteButton');
+const $cancelDeleteButton = document.querySelector('#cancelDeleteButton');
+
+$deleteEntryButton.addEventListener('click', function (event) {
+  $confirmModal.classList.remove('hidden');
+});
+
+$confirmDeleteButton.addEventListener('click', function (event) {
+  $confirmModal.classList.add('hidden');
+});
+
+$cancelDeleteButton.addEventListener('click', function (event) {
+  $confirmModal.classList.add('hidden');
+});
