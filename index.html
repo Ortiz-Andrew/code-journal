@@ -52,8 +52,22 @@
             <div class="column-full">
               <label class="notes" for="notes">Notes</label>
               <textarea name="notes" id="notes" required></textarea>
-              <div class="save-button">
-                <button>SAVE</button>
+              <div class="button-container">
+                <button class="delete-entry-button">Delete Entry</button>
+                <button class="save-button">SAVE</button>
+              </div>
+            </div>
+            <div class="confirmModal hidden">
+              <div class="modal-content">
+                <p>Are you sure you want to delete this entry?</p>
+                <div class="modal-buttons">
+                  <button id="cancelDeleteButton" class="cancel-button">
+                    Cancel
+                  </button>
+                  <button id="confirmDeleteButton" class="confirm-button">
+                    Confirm
+                  </button>
+                </div>
               </div>
             </div>
           </div>
