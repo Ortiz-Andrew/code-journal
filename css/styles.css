@@ -127,3 +127,13 @@ ul {
   margin-right: 20px;
   margin-left: 20px;
 }
+
+.title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-wrapper i {
+  margin-left: 10px;
+}

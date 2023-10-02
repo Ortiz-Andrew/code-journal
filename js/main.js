@@ -1,5 +1,6 @@
 const $photo = document.querySelector('#photo');
 const $image = document.querySelector('img');
+const $confirmModal = document.querySelector('.confirmModal');
 
 $photo.addEventListener('input', function (event) {
   $image.src = event.target.value;
@@ -162,7 +163,6 @@ function populateForm(entry) {
 }
 
 const $deleteEntryButton = document.querySelector('.deleteEntryButton');
-const $confirmModal = document.querySelector('.confirmModal');
 const $confirmDeleteButton = document.querySelector('#confirmDeleteButton');
 const $cancelDeleteButton = document.querySelector('#cancelDeleteButton');
 
